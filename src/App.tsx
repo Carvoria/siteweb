@@ -10,6 +10,7 @@ import {
   Globe,
   ExternalLink,
   Star,
+  X,
 } from "lucide-react";
 import sanityClient, { urlFor } from "./Lib/sanityClient.js";
 
@@ -33,6 +34,7 @@ function App() {
   const [openingHours, setOpeningHours] = useState([]);
   const [transportInfo, setTransportInfo] = useState([]);
   const [menuPdf, setMenuPdf] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     setTimeout(() => {
@@ -617,16 +619,37 @@ function App() {
               )}
             </div>
             <div className="flex flex-col items-center md:items-start space-y-6">
-              <a
-                href={menuPdf}
-                target="_blank"
-                className="bg-yellow-600 text-white px-8 py-4 rounded-full hover:bg-yellow-700 transition-all duration-300 hover:scale-105 hover:shadow-lg flex items-center gap-3 text-lg"
+              <button
+                onClick={() => setIsModalOpen(true)}
+                className="bg-yellow-600 text-white px-6 py-3 rounded-lg flex items-center gap-2 hover:bg-yellow-700 transition"
               >
-                <FileText size={24} />
-                {language === "en"
-                  ? "Discover our Menu"
-                  : "Descubra o nosso Menu"}
-              </a>
+                <FileText size={20} /> Voir le Menu
+              </button>
+
+              {isModalOpen && (
+                <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50">
+                  <div className="bg-white rounded-lg shadow-lg w-full max-w-3xl p-6 relative">
+                    <button
+                      onClick={() => setIsModalOpen(false)}
+                      className="absolute top-3 right-3 text-gray-500 hover:text-gray-700"
+                    >
+                      <X size={24} />
+                    </button>
+                    <h2 className="text-xl font-bold mb-4">
+                      {language === "pt" ? " Nosso cardápio " : "Our menu "}
+                    </h2>
+                    {menuPdf ? (
+                      <iframe
+                        src={menuPdf}
+                        className="w-full h-[70dvh]"
+                        title="Menu PDF"
+                      ></iframe>
+                    ) : (
+                      <p>Chargement du menu...</p>
+                    )}
+                  </div>
+                </div>
+              )}
               <p className="text-gray-600 text-center md:text-left">
                 {t.menu.description}
               </p>
