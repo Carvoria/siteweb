@@ -497,6 +497,25 @@ function App() {
             <PhoneCall size={16} />
             <span className="hidden sm:inline">{t.nav.book}</span>
           </a>
+          <div className="md:hidden flex items-center gap-2 text-white">
+            <Globe size={16} />
+            <button
+              onClick={() => setLanguage("pt")}
+              className={`px-2 py-1 rounded transition ${
+                language === "pt" ? "bg-yellow-600" : "hover:bg-stone-700"
+              }`}
+            >
+              PT
+            </button>
+            <button
+              onClick={() => setLanguage("en")}
+              className={`px-2 py-1 rounded transition ${
+                language === "en" ? "bg-yellow-600" : "hover:bg-stone-700"
+              }`}
+            >
+              EN
+            </button>
+          </div>
         </div>
       </nav>
 
