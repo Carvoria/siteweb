@@ -35,6 +35,7 @@ function App() {
   const [transportInfo, setTransportInfo] = useState([]);
   const [menuPdf, setMenuPdf] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const seeMenuLabel = language === "pt" ? "Ver Menu" : "View Menu";
 
   useEffect(() => {
     setTimeout(() => {
@@ -109,7 +110,7 @@ function App() {
         book: "Reservar",
       },
       hero: {
-        subtitle: "Tradição em Carnes Grelhadas desde 1953",
+        subtitle: "Maestria em Carnes Grelhadas desde 1953",
         open: "O restaurante está aberto e pronto para o receber.",
         closed:
           "O restaurante estará fechado excepcionalmente de 10 a 16 de fevereiro",
@@ -120,9 +121,9 @@ function App() {
         monday: "segunda-feira às",
       },
       history: {
-        title: "Nossa História",
+        title: "A Nossa História",
         content:
-          "Desde 1953, Carvoaria Jacto tem sido uma referência em Lisboa para os amantes de carne. Localizado no histórico bairro de Intendente & Anjos, nosso restaurante mantém viva a tradição da autêntica culinária portuguesa, especializando-se em carnes grelhadas da mais alta qualidade.",
+          "Desde 1953, a Carvoaria Jacto tem sido uma referência em Lisboa para os amantes de carne. Localizado no bairro histórico dos Anjos, o nosso restaurante mantém viva a tradição da autêntica culinária portuguesa, especializando-se em carnes grelhadas da mais alta qualidade.",
       },
       menu: {
         title: "Menu",
@@ -180,7 +181,7 @@ function App() {
         book: "Book",
       },
       hero: {
-        subtitle: "Grilled Meat Tradition since 1953",
+        subtitle: "Mastery in Grilled Meats since 1953",
         open: "The restaurant is open and ready to welcome you.",
         closed:
           "The restaurant will be exceptionally closed from February 10th to 16th",
@@ -193,7 +194,7 @@ function App() {
       history: {
         title: "Our History",
         content:
-          "Established in 1953, Carvoaria Jacto has become a staple in Lisbon for meat enthusiasts. Nestled in the historic Intendente & Anjos neighborhood, our restaurant proudly upholds the tradition of authentic Portuguese cuisine, with a focus on premium grilled meats.",
+          "Established in 1953, Carvoaria Jacto has become a staple in Lisbon for meat enthusiasts. Nestled in the historic Anjos neighborhood, our restaurant proudly upholds the tradition of authentic Portuguese cuisine, with a focus on premium grilled meats.",
       },
       menu: {
         title: "Menu",
@@ -623,7 +624,7 @@ function App() {
                 onClick={() => setIsModalOpen(true)}
                 className="bg-yellow-600 text-white px-6 py-3 rounded-lg flex items-center gap-2 hover:bg-yellow-700 transition"
               >
-                <FileText size={20} /> Voir le Menu
+                <FileText size={20} /> {seeMenuLabel}
               </button>
 
               {isModalOpen && (
